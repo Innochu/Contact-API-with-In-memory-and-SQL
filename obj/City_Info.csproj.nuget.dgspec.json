@@ -4,6 +4,21 @@
     "C:\\Users\\Decagon\\source\\repos\\City_Info\\City_Info.csproj": {}
   },
   "projects": {
+    "C:\\Users\\Decagon\\source\\repos\\City.Models\\City.Models.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Decagon\\source\\repos\\City.Models\\City.Models.csproj",
+        "projectName": "City.Models",
+        "projectPath": "C:\\Users\\Decagon\\source\\repos\\City.Models\\City.Models.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
     "C:\\Users\\Decagon\\source\\repos\\City_Info\\City_Info.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -27,7 +42,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Decagon\\source\\repos\\City.Models\\City.Models.csproj": {
+                "projectPath": "C:\\Users\\Decagon\\source\\repos\\City.Models\\City.Models.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -40,6 +59,30 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
