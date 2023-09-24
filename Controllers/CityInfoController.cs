@@ -25,6 +25,18 @@ namespace City_Info.Controllers
 			//return View();
 		}
 
+		[HttpGet]
+		[Route ("{id:Guid}")]
+		public async Task<IActionResult> GetContact([FromRoute] Guid id)
+		{
+			var contact = await _cityDBContext.Contacts.FindAsync(id);
+			
+			if(contact == null)
+			{
+				return NotFound();
+			}
+			return Ok(contact);
+		}
 
 		[HttpPost]
 		public async Task<IActionResult> AddRequest(AddContactRequest addContactRequest) //pass the new model you created as a parameter in this post method
@@ -68,6 +80,22 @@ namespace City_Info.Controllers
 			return NotFound();
 			
 
+
+		}
+
+		[HttpDelete]
+		[Route ("{id:Guid}")]
+		public async Task<IActionResult> DeleteRequest([FromRoute] Guid id)
+		{
+			var product = await _cityDBContext.Contacts.FindAsync(id);
+
+			if (product != null)
+			{
+				_cityDBContext.Contacts.Remove(product);
+				await _cityDBContext.SaveChangesAsync();
+				return Ok(product);
+			}
+			return NotFound();
 
 		}
 	}
