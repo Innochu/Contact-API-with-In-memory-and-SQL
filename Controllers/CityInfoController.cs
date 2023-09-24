@@ -2,6 +2,7 @@
 using City_Info.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace City_Info.Controllers
 {
@@ -43,6 +44,31 @@ namespace City_Info.Controllers
 			await _cityDBContext.SaveChangesAsync();                 //save all changes async
 			
 			return Ok(contact);                                        // return contact with an Ok response
+		}
+
+		[HttpPut]
+		[Route ("{id:guid}")]
+		public async Task<IActionResult> UpdateRequest([FromRoute] Guid id, UpdateContactRequest updateContactRequest)
+		{
+			var contact = await _cityDBContext.Contacts.FindAsync(id);
+			
+
+			if (contact !=null)
+			{
+				contact.FullName = updateContactRequest.FullName;
+				contact.Email = updateContactRequest.Email;
+				contact.PhoneNumber = updateContactRequest.PhoneNumber;
+				contact.Address = updateContactRequest.Address;
+
+
+				await _cityDBContext.SaveChangesAsync();
+				return Ok(contact);
+			
+			}
+			return NotFound();
+			
+
+
 		}
 	}
 }
